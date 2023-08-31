@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var fall_acceleration = 75.0
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
@@ -22,5 +22,10 @@ func _physics_process(_delta):
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
+
+	if is_on_floor() and Input.is_action_pressed("jump"):
+		velocity.y += jump_impulse
+
+	velocity.y -= fall_acceleration * delta
 
 	move_and_slide()
