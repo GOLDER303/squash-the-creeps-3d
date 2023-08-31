@@ -7,6 +7,11 @@ func _ready():
 	randomize()
 
 
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
+		get_tree().reload_current_scene()
+
+
 func _on_mob_timer_timeout():
 	var mob = mob_scene.instantiate()
 
@@ -20,7 +25,9 @@ func _on_mob_timer_timeout():
 
 	add_child(mob)
 	mob.initialize(mob_spawn_location.position, player_position)
+	mob.connect("squashed", $UserInterface/ScoreLabel._on_mob_squashed)
 
 
 func _on_player_hit():
 	$MobTimer.stop()
+	$UserInterface/Retry.show()
