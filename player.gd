@@ -17,8 +17,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_forward"):
 		direction.z -= 1
 
-	direction = direction.normalized()
-	$Pivot.look_at(position + direction, Vector3.UP)
+	if direction != Vector3.ZERO:
+		direction = direction.normalized()
+		$Pivot.look_at(position + direction, Vector3.UP)
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
