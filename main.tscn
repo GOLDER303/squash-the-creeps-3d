@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ka27gbk1l87b"]
+[gd_scene load_steps=12 format=3 uid="uid://ka27gbk1l87b"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_n71vy"]
 [ext_resource type="PackedScene" uid="uid://bqyijlb7314vx" path="res://player.tscn" id="1_w70ls"]
 [ext_resource type="Theme" uid="uid://dqb6364mcbpj3" path="res://UI_theme.tres" id="3_knmxb"]
 [ext_resource type="Script" path="res://ScoreLabel.gd" id="4_vb8dr"]
+[ext_resource type="AudioStream" uid="uid://ch6ovwnier7vv" path="res://art/House In a Forest Loop.ogg" id="5_8q1mx"]
 [ext_resource type="Environment" uid="uid://cii720uisam62" path="res://default_env.tres" id="6_w1tts"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5380"]
@@ -127,6 +128,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press enter to retry"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8q1mx")
+autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("6_w1tts")
